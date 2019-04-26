@@ -1,38 +1,48 @@
 import { Component, State } from '@stencil/core';
+import { MDCSelect } from '@material/select';
+
 import { SwapiService } from '../../services/swapi';
 
 @Component({
     tag: 'sw-film-list',
-    styleUrl: 'sw-film-list.css'
+    styleUrl: 'sw-film-list.scss'
 })
 export class SwFilmList {
-      /**
-   * The Film Title 
-   */
+    /**
+ * The Film Title 
+ */
     @State() filmUrl: string;
 
     private films: any;
+
+    private select = new MDCSelect(document.querySelector('.mdc-select'));
 
     protected async componentWillLoad() {
         let service = new SwapiService();
         await service.getFilms().then(response => {
             this.films = response;
         });
-    }
 
-    protected handleSelect(event) {
-      this.filmUrl = event.target.value;
+        this.select.listen('MDCSelect:change', () => {
+            this.filmUrl = this.select.value;
+        });
     }
 
     render() {
         return (
             <div>
                 <p>Hello SwFilmList!</p>
-                <select onInput={(event) => this.handleSelect(event)}>
-                    {this.films.map((film) =>
-                        <option value={film.url} selected={this.filmUrl === film.url}>{film.title}</option>
-                    )}
-                </select>
+                <div class="mdc-select">
+                    <i class="mdc-select__dropdown-icon"></i>
+                    <select class="mdc-select__native-control">
+                        <option value="" disabled selected></option>
+                        {this.films.map((film) =>
+                            <option value={film.url} selected={this.filmUrl === film.url}>{film.title}</option>
+                        )}
+                    </select>
+                    <label class="mdc-floating-label">Pick a Film</label>
+                    <div class="mdc-line-ripple"></div>
+                </div>
                 <sw-film-details film-url={this.filmUrl}></sw-film-details>
             </div>
         );

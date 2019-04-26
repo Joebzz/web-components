@@ -16,9 +16,12 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@material/select": "^1.1.1"
+  },
   "devDependencies": {
-    "@stencil/core": "~0.16.2"
+    "@stencil/core": "~0.16.2",
+    "@stencil/sass": "^0.1.1"
   },
   "license": "MIT"
 }

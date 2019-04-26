@@ -1,10 +1,9 @@
 import { Component, Prop } from '@stencil/core';
 import { SwapiService } from '../../services/swapi';
 
-
 @Component({
     tag: 'sw-film-details',
-    styleUrl: 'sw-film-details.css'
+    styleUrl: 'sw-film-details.scss'
 })
 export class SwFilmDetails {
     /**
