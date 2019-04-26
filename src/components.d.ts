@@ -40,15 +40,29 @@ export namespace Components {
     */
     'middle'?: string;
   }
+
+  interface SwFilmDetails {
+    'filmUrl': string;
+  }
+  interface SwFilmDetailsAttributes extends StencilHTMLAttributes {
+    'filmUrl'?: string;
+  }
+
+  interface SwFilmList {}
+  interface SwFilmListAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
     'MyComponent': Components.MyComponent;
+    'SwFilmDetails': Components.SwFilmDetails;
+    'SwFilmList': Components.SwFilmList;
   }
 
   interface StencilIntrinsicElements {
     'my-component': Components.MyComponentAttributes;
+    'sw-film-details': Components.SwFilmDetailsAttributes;
+    'sw-film-list': Components.SwFilmListAttributes;
   }
 
 
@@ -58,12 +72,28 @@ declare global {
     new (): HTMLMyComponentElement;
   };
 
+  interface HTMLSwFilmDetailsElement extends Components.SwFilmDetails, HTMLStencilElement {}
+  var HTMLSwFilmDetailsElement: {
+    prototype: HTMLSwFilmDetailsElement;
+    new (): HTMLSwFilmDetailsElement;
+  };
+
+  interface HTMLSwFilmListElement extends Components.SwFilmList, HTMLStencilElement {}
+  var HTMLSwFilmListElement: {
+    prototype: HTMLSwFilmListElement;
+    new (): HTMLSwFilmListElement;
+  };
+
   interface HTMLElementTagNameMap {
     'my-component': HTMLMyComponentElement
+    'sw-film-details': HTMLSwFilmDetailsElement
+    'sw-film-list': HTMLSwFilmListElement
   }
 
   interface ElementTagNameMap {
     'my-component': HTMLMyComponentElement;
+    'sw-film-details': HTMLSwFilmDetailsElement;
+    'sw-film-list': HTMLSwFilmListElement;
   }
 
 
