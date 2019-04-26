@@ -1,4 +1,4 @@
-import { Component } from '@stencil/core';
+import { Component, State } from '@stencil/core';
 import { SwapiService } from '../../services/swapi';
 
 @Component({
@@ -6,26 +6,34 @@ import { SwapiService } from '../../services/swapi';
     styleUrl: 'sw-film-list.css'
 })
 export class SwFilmList {
+      /**
+   * The Film Title 
+   */
+    @State() filmUrl: string;
+
     private films: any;
 
     protected async componentWillLoad() {
         let service = new SwapiService();
         await service.getFilms().then(response => {
-            const results = response.results;
-            console.log("Film List Results:", results);
-            this.films = results;
+            this.films = response;
         });
+    }
+
+    protected handleSelect(event) {
+      this.filmUrl = event.target.value;
     }
 
     render() {
         return (
             <div>
                 <p>Hello SwFilmList!</p>
-                <ul>
+                <select onInput={(event) => this.handleSelect(event)}>
                     {this.films.map((film) =>
-                        <sw-film-details film-url={film.url}></sw-film-details>
+                        <option value={film.url} selected={this.filmUrl === film.url}>{film.title}</option>
                     )}
-                </ul>
+                </select>
+                <sw-film-details film-url={this.filmUrl}></sw-film-details>
             </div>
         );
     }

@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property  | Attribute  | Description | Type     | Default     |
-| --------- | ---------- | ----------- | -------- | ----------- |
-| `filmUrl` | `film-url` |             | `string` | `undefined` |
+| Property  | Attribute  | Description          | Type     | Default     |
+| --------- | ---------- | -------------------- | -------- | ----------- |
+| `filmId`  | `film-id`  | The id for the film  | `number` | `1`         |
+| `filmUrl` | `film-url` | The URL for the film | `string` | `undefined` |
 
 
 ----------------------------------------------

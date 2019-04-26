@@ -7,19 +7,50 @@ import { SwapiService } from '../../services/swapi';
     styleUrl: 'sw-film-details.css'
 })
 export class SwFilmDetails {
+    /**
+     * The URL for the film
+     */
     @Prop() filmUrl: string;
 
+    /**
+     * The id for the film
+     */
+    @Prop() filmId: number = 1;
+
+    private dataPromise: Promise<any>;
     private film: any;
-    
+
+    constructor(private service = new SwapiService()) { }
+
     protected async componentWillLoad() {
-        let service = new SwapiService();
-        console.log("Film Url:", this.filmUrl);
-        await service.getCall(this.filmUrl).then(response => {
-            console.log("Film Result:", response);
+        if (this.filmUrl) {
+            this.dataPromise = this.service.getData(this.filmUrl);
+        }
+        else if (this.filmId) {
+            this.dataPromise = this.service.getFilm(this.filmId);
+        }
+        await this.updateFilm();
+    }
+
+    protected async componentWillUpdate() {
+        console.log("Component Will Update");
+        if (this.filmUrl) {
+            this.dataPromise = this.service.getData(this.filmUrl);
+        }
+        else if (this.filmId) {
+            this.dataPromise = this.service.getFilm(this.filmId);
+        }
+        await this.updateFilm();
+    }
+
+    private async updateFilm() {
+        await this.dataPromise.then(response => {
             this.film = response;
+        }).catch(error => {
+            console.log("Error", error)
         });
     }
-    
+
     render() {
         return (
             <div>

@@ -42,14 +42,31 @@ export namespace Components {
   }
 
   interface SwFilmDetails {
+    /**
+    * The id for the film
+    */
+    'filmId': number;
+    /**
+    * The URL for the film
+    */
     'filmUrl': string;
   }
   interface SwFilmDetailsAttributes extends StencilHTMLAttributes {
+    /**
+    * The id for the film
+    */
+    'filmId'?: number;
+    /**
+    * The URL for the film
+    */
     'filmUrl'?: string;
   }
 
   interface SwFilmList {}
   interface SwFilmListAttributes extends StencilHTMLAttributes {}
+
+  interface SwPeopleList {}
+  interface SwPeopleListAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
@@ -57,12 +74,14 @@ declare global {
     'MyComponent': Components.MyComponent;
     'SwFilmDetails': Components.SwFilmDetails;
     'SwFilmList': Components.SwFilmList;
+    'SwPeopleList': Components.SwPeopleList;
   }
 
   interface StencilIntrinsicElements {
     'my-component': Components.MyComponentAttributes;
     'sw-film-details': Components.SwFilmDetailsAttributes;
     'sw-film-list': Components.SwFilmListAttributes;
+    'sw-people-list': Components.SwPeopleListAttributes;
   }
 
 
@@ -84,16 +103,24 @@ declare global {
     new (): HTMLSwFilmListElement;
   };
 
+  interface HTMLSwPeopleListElement extends Components.SwPeopleList, HTMLStencilElement {}
+  var HTMLSwPeopleListElement: {
+    prototype: HTMLSwPeopleListElement;
+    new (): HTMLSwPeopleListElement;
+  };
+
   interface HTMLElementTagNameMap {
     'my-component': HTMLMyComponentElement
     'sw-film-details': HTMLSwFilmDetailsElement
     'sw-film-list': HTMLSwFilmListElement
+    'sw-people-list': HTMLSwPeopleListElement
   }
 
   interface ElementTagNameMap {
     'my-component': HTMLMyComponentElement;
     'sw-film-details': HTMLSwFilmDetailsElement;
     'sw-film-list': HTMLSwFilmListElement;
+    'sw-people-list': HTMLSwPeopleListElement;
   }
 
 
