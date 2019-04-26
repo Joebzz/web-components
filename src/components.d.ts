@@ -49,7 +49,7 @@ export namespace Components {
     /**
     * The URL for the film
     */
-    'filmUrl': string;
+    'url': string;
   }
   interface SwFilmDetailsAttributes extends StencilHTMLAttributes {
     /**
@@ -59,7 +59,7 @@ export namespace Components {
     /**
     * The URL for the film
     */
-    'filmUrl'?: string;
+    'url'?: string;
   }
 
   interface SwFilmList {}
@@ -67,6 +67,27 @@ export namespace Components {
 
   interface SwPeopleList {}
   interface SwPeopleListAttributes extends StencilHTMLAttributes {}
+
+  interface SwPersonDetails {
+    /**
+    * The id for the person
+    */
+    'personId': number;
+    /**
+    * The URL for the person
+    */
+    'url': string;
+  }
+  interface SwPersonDetailsAttributes extends StencilHTMLAttributes {
+    /**
+    * The id for the person
+    */
+    'personId'?: number;
+    /**
+    * The URL for the person
+    */
+    'url'?: string;
+  }
 }
 
 declare global {
@@ -75,6 +96,7 @@ declare global {
     'SwFilmDetails': Components.SwFilmDetails;
     'SwFilmList': Components.SwFilmList;
     'SwPeopleList': Components.SwPeopleList;
+    'SwPersonDetails': Components.SwPersonDetails;
   }
 
   interface StencilIntrinsicElements {
@@ -82,6 +104,7 @@ declare global {
     'sw-film-details': Components.SwFilmDetailsAttributes;
     'sw-film-list': Components.SwFilmListAttributes;
     'sw-people-list': Components.SwPeopleListAttributes;
+    'sw-person-details': Components.SwPersonDetailsAttributes;
   }
 
 
@@ -109,11 +132,18 @@ declare global {
     new (): HTMLSwPeopleListElement;
   };
 
+  interface HTMLSwPersonDetailsElement extends Components.SwPersonDetails, HTMLStencilElement {}
+  var HTMLSwPersonDetailsElement: {
+    prototype: HTMLSwPersonDetailsElement;
+    new (): HTMLSwPersonDetailsElement;
+  };
+
   interface HTMLElementTagNameMap {
     'my-component': HTMLMyComponentElement
     'sw-film-details': HTMLSwFilmDetailsElement
     'sw-film-list': HTMLSwFilmListElement
     'sw-people-list': HTMLSwPeopleListElement
+    'sw-person-details': HTMLSwPersonDetailsElement
   }
 
   interface ElementTagNameMap {
@@ -121,6 +151,7 @@ declare global {
     'sw-film-details': HTMLSwFilmDetailsElement;
     'sw-film-list': HTMLSwFilmListElement;
     'sw-people-list': HTMLSwPeopleListElement;
+    'sw-person-details': HTMLSwPersonDetailsElement;
   }
 
 

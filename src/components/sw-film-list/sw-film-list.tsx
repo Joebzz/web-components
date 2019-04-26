@@ -15,16 +15,19 @@ export class SwFilmList {
 
     private films: any;
 
-    private select = new MDCSelect(document.querySelector('.mdc-select'));
 
     protected async componentWillLoad() {
         let service = new SwapiService();
         await service.getFilms().then(response => {
             this.films = response;
         });
+    }
 
-        this.select.listen('MDCSelect:change', () => {
-            this.filmUrl = this.select.value;
+    protected componentDidLoad() {
+        let select = new MDCSelect(document.querySelector('.mdc-select'));
+
+        select.listen('MDCSelect:change', () => {
+            this.filmUrl = select.value;
         });
     }
 
@@ -43,7 +46,7 @@ export class SwFilmList {
                     <label class="mdc-floating-label">Pick a Film</label>
                     <div class="mdc-line-ripple"></div>
                 </div>
-                <sw-film-details film-url={this.filmUrl}></sw-film-details>
+                <sw-film-details url={this.filmUrl}></sw-film-details>
             </div>
         );
     }

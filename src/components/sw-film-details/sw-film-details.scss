@@ -1,5 +1,9 @@
+@import "@material/card/mdc-card";
+@import "@material/list/mdc-list";
+
 sw-film-details {
     /* Component styles go here */
-    border: 1px dashed green;
-    // display: inline-block;
+    .mdc-card {
+        padding: 16px;
+      }
 }

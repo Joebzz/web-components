@@ -9,7 +9,7 @@ export class SwFilmDetails {
     /**
      * The URL for the film
      */
-    @Prop() filmUrl: string;
+    @Prop() url: string;
 
     /**
      * The id for the film
@@ -22,8 +22,8 @@ export class SwFilmDetails {
     constructor(private service = new SwapiService()) { }
 
     protected async componentWillLoad() {
-        if (this.filmUrl) {
-            this.dataPromise = this.service.getData(this.filmUrl);
+        if (this.url) {
+            this.dataPromise = this.service.getData(this.url);
         }
         else if (this.filmId) {
             this.dataPromise = this.service.getFilm(this.filmId);
@@ -32,9 +32,8 @@ export class SwFilmDetails {
     }
 
     protected async componentWillUpdate() {
-        console.log("Component Will Update");
-        if (this.filmUrl) {
-            this.dataPromise = this.service.getData(this.filmUrl);
+        if (this.url) {
+            this.dataPromise = this.service.getData(this.url);
         }
         else if (this.filmId) {
             this.dataPromise = this.service.getFilm(this.filmId);
@@ -52,8 +51,15 @@ export class SwFilmDetails {
 
     render() {
         return (
-            <div>
+            <div class="mdc-card mdc-card--outlined">
                 Title: {this.film.title}; Director: {this.film.director}; Release Date:{this.film.release_date}.
+                <ul class="mdc-list">
+                    {this.film.characters.map(character =>
+                        <li class="mdc-list-item" tabindex="0">
+                            <span class="mdc-list-item__text"><sw-person-details url={character}></sw-person-details></span>
+                        </li>
+                    )}
+                </ul>
             </div>
         );
     }

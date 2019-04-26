@@ -4,7 +4,7 @@ import { SwapiService } from '../../services/swapi';
 
 @Component({
     tag: 'sw-people-list',
-    styleUrl: 'sw-people-list.css'
+    styleUrl: 'sw-people-list.scss'
 })
 export class SwPeopleList {
 

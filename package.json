@@ -13,10 +13,13 @@
   "scripts": {
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
+    "start.prod": "stencil build --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "dependencies": {
+    "@material/card": "^1.1.1",
+    "@material/list": "^1.1.1",
     "@material/select": "^1.1.1"
   },
   "devDependencies": {
