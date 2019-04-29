@@ -12,33 +12,26 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface MyComponent {
+  interface MatDialog {
     /**
-    * The first name
+    * The Dialog Title
     */
-    'first': string;
+    'dialogTitle': string;
+    'openDialog': () => void;
     /**
-    * The last name
+    * Whether to show the footer or not
     */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
+    'showFooter': boolean;
   }
-  interface MyComponentAttributes extends StencilHTMLAttributes {
+  interface MatDialogAttributes extends StencilHTMLAttributes {
     /**
-    * The first name
+    * The Dialog Title
     */
-    'first'?: string;
+    'dialogTitle'?: string;
     /**
-    * The last name
+    * Whether to show the footer or not
     */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
+    'showFooter'?: boolean;
   }
 
   interface SwFilmDetails {
@@ -79,6 +72,7 @@ export namespace Components {
     'url': string;
   }
   interface SwPersonDetailsAttributes extends StencilHTMLAttributes {
+    'onOpenPersonDetails'?: (event: CustomEvent) => void;
     /**
     * The id for the person
     */
@@ -92,7 +86,7 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
-    'MyComponent': Components.MyComponent;
+    'MatDialog': Components.MatDialog;
     'SwFilmDetails': Components.SwFilmDetails;
     'SwFilmList': Components.SwFilmList;
     'SwPeopleList': Components.SwPeopleList;
@@ -100,7 +94,7 @@ declare global {
   }
 
   interface StencilIntrinsicElements {
-    'my-component': Components.MyComponentAttributes;
+    'mat-dialog': Components.MatDialogAttributes;
     'sw-film-details': Components.SwFilmDetailsAttributes;
     'sw-film-list': Components.SwFilmListAttributes;
     'sw-people-list': Components.SwPeopleListAttributes;
@@ -108,10 +102,10 @@ declare global {
   }
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLMatDialogElement extends Components.MatDialog, HTMLStencilElement {}
+  var HTMLMatDialogElement: {
+    prototype: HTMLMatDialogElement;
+    new (): HTMLMatDialogElement;
   };
 
   interface HTMLSwFilmDetailsElement extends Components.SwFilmDetails, HTMLStencilElement {}
@@ -139,7 +133,7 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement
+    'mat-dialog': HTMLMatDialogElement
     'sw-film-details': HTMLSwFilmDetailsElement
     'sw-film-list': HTMLSwFilmListElement
     'sw-people-list': HTMLSwPeopleListElement
@@ -147,7 +141,7 @@ declare global {
   }
 
   interface ElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'mat-dialog': HTMLMatDialogElement;
     'sw-film-details': HTMLSwFilmDetailsElement;
     'sw-film-list': HTMLSwFilmListElement;
     'sw-people-list': HTMLSwPeopleListElement;

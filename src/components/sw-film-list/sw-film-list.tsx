@@ -1,4 +1,4 @@
-import { Component, State } from '@stencil/core';
+import { Component, State, Listen } from '@stencil/core';
 import { MDCSelect } from '@material/select';
 
 import { SwapiService } from '../../services/swapi';
@@ -9,12 +9,24 @@ import { SwapiService } from '../../services/swapi';
 })
 export class SwFilmList {
     /**
- * The Film Title 
- */
+     * The Film Title 
+     */
     @State() filmUrl: string;
 
     private films: any;
 
+    @Listen('openPersonDetails')
+    openPersonDetailsHandler(event: any) {
+        let person = event.detail;
+
+        let personDialog = document.querySelector('mat-dialog');
+        personDialog.dialogTitle = person.name;
+        let dialogContent = personDialog.querySelector('#dialogContent');
+        console.log(dialogContent);
+        dialogContent.innerHTML = person.gender;
+
+        personDialog.openDialog();
+    }
 
     protected async componentWillLoad() {
         let service = new SwapiService();
@@ -47,6 +59,10 @@ export class SwFilmList {
                     <div class="mdc-line-ripple"></div>
                 </div>
                 <sw-film-details url={this.filmUrl}></sw-film-details>
+
+                <mat-dialog dialog-title="Test Dialog" show-footer="true" >
+                    <p slot='dialog-content' id="dialogContent">Test Static</p>
+                </mat-dialog>
             </div>
         );
     }

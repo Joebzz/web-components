@@ -13,6 +13,13 @@
 | `url`      | `url`       | The URL for the person | `string` | `undefined` |
 
 
+## Events
+
+| Event               | Description | Type                |
+| ------------------- | ----------- | ------------------- |
+| `openPersonDetails` |             | `CustomEvent<void>` |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

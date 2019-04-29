@@ -128,12 +128,12 @@ export class SwapiService {
   }
 
   getData(url: string) {
-    console.log("getData", url);
+    //console.log("getData", url);
     return fetch(url).then((response: Response) => response.json());
   }
 
   getAllData(url: string, data = []) {
-    return new Promise((resolve, reject) => fetch(url)
+    return new Promise((resolve, reject) => fetch(url, {mode: "cors"})
       .then(response => {
           if (response.status !== 200)  {
             throw `${response.status}: ${response.statusText}`;

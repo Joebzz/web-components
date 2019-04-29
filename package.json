@@ -1,7 +1,7 @@
 {
   "name": "web-components",
   "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "description": "Webcomponents Built using StencilJS and reading from the SWAPI.",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
   "unpkg": "dist/ionic.js",
@@ -18,13 +18,20 @@
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "dependencies": {
+    "@material/button": "^1.1.1",
     "@material/card": "^1.1.1",
+    "@material/dialog": "^1.1.1",
     "@material/list": "^1.1.1",
-    "@material/select": "^1.1.1"
+    "@material/select": "^1.1.1",
+    "@stencil/sass": "^0.1.1"
   },
   "devDependencies": {
     "@stencil/core": "~0.16.2",
-    "@stencil/sass": "^0.1.1"
+    "@types/jest": "23.3.14",
+    "@types/puppeteer": "1.6.4",
+    "jest": "23.6.0",
+    "jest-cli": "23.6.0",
+    "puppeteer": "1.8.0"
   },
   "license": "MIT"
 }

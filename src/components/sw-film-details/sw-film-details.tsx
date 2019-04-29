@@ -45,7 +45,7 @@ export class SwFilmDetails {
         await this.dataPromise.then(response => {
             this.film = response;
         }).catch(error => {
-            console.log("Error", error)
+            console.log("Error", error);
         });
     }
 
@@ -56,7 +56,9 @@ export class SwFilmDetails {
                 <ul class="mdc-list">
                     {this.film.characters.map(character =>
                         <li class="mdc-list-item" tabindex="0">
-                            <span class="mdc-list-item__text"><sw-person-details url={character}></sw-person-details></span>
+                            <span class="mdc-list-item__text">
+                                <sw-person-details url={character}></sw-person-details>
+                            </span>
                         </li>
                     )}
                 </ul>

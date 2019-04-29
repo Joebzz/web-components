@@ -1,6 +1,5 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, Event, EventEmitter } from '@stencil/core';
 import { SwapiService } from '../../services/swapi';
-
 
 @Component({
     tag: 'sw-person-details',
@@ -16,7 +15,7 @@ export class SwPersonDetails {
      * The id for the person
      */
     @Prop() personId: number = 1;
-    
+
     private dataPromise: Promise<any>;
     private person: any;
 
@@ -50,11 +49,16 @@ export class SwPersonDetails {
         });
     }
 
+    @Event() openPersonDetails: EventEmitter;
+    openPersonDetailsHandler(person: any) {
+      this.openPersonDetails.emit(person);
+    }
+
     render() {
         return (
-            <span>
-                {this.person.name}!
-            </span>
+            <div>
+                <span onClick={() => this.openPersonDetailsHandler(this.person)}>{this.person.name}</span>
+            </div>
         );
     }
 }
