@@ -18,20 +18,20 @@
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "dependencies": {
-    "@material/button": "^1.1.1",
-    "@material/card": "^1.1.1",
-    "@material/dialog": "^1.1.1",
-    "@material/list": "^1.1.1",
-    "@material/select": "^1.1.1",
-    "@stencil/sass": "^0.1.1"
+    "@material/button": "^2.0.0",
+    "@material/card": "^2.0.0",
+    "@material/dialog": "^2.0.0",
+    "@material/list": "^2.0.0",
+    "@material/select": "^2.0.0",
+    "@stencil/sass": "^0.2.1"
   },
   "devDependencies": {
-    "@stencil/core": "~0.16.2",
-    "@types/jest": "23.3.14",
-    "@types/puppeteer": "1.6.4",
-    "jest": "23.6.0",
-    "jest-cli": "23.6.0",
-    "puppeteer": "1.8.0"
+    "@stencil/core": "^0.18.1",
+    "@types/jest": "24.0.12",
+    "@types/puppeteer": "1.12.4",
+    "jest": "24.8.0",
+    "jest-cli": "24.8.0",
+    "puppeteer": "1.15.0"
   },
   "license": "MIT"
 }
