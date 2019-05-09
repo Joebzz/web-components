@@ -15,7 +15,9 @@
     "start": "stencil build --dev --watch --serve",
     "start.prod": "stencil build --watch --serve",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@material/button": "^2.0.0",
@@ -31,7 +33,10 @@
     "@types/puppeteer": "1.12.4",
     "jest": "24.8.0",
     "jest-cli": "24.8.0",
-    "puppeteer": "1.15.0"
+    "puppeteer": "1.15.0",
+    "@storybook/html": "^5.0.11",
+    "@babel/core": "^7.4.4",
+    "babel-loader": "^8.0.5"
   },
   "license": "MIT"
 }
