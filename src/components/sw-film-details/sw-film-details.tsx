@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core';
 import { SwapiService } from '../../services/swapi';
 
 @Component({
@@ -18,8 +18,7 @@ export class SwFilmDetails {
 
     private dataPromise: Promise<any>;
     private film: any;
-
-    constructor(private service = new SwapiService()) { }
+    private service = new SwapiService();
 
     protected async componentWillLoad() {
         if (this.url) {

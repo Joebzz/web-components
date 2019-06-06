@@ -1,4 +1,4 @@
-import { Component, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, Prop, Event, EventEmitter, h } from '@stencil/core';
 import { SwapiService } from '../../services/swapi';
 
 @Component({
@@ -19,8 +19,8 @@ export class SwPersonDetails {
     private dataPromise: Promise<any>;
     private person: any;
 
-    constructor(private service = new SwapiService()) { }
-
+    private service = new SwapiService();
+    
     protected async componentWillLoad() {
         if (this.url) {
             this.dataPromise = this.service.getData(this.url);

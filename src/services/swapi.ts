@@ -133,20 +133,20 @@ export class SwapiService {
   }
 
   getAllData(url: string, data = []) {
-    return new Promise((resolve, reject) => fetch(url, {mode: "cors"})
+    return new Promise((resolve, reject) => fetch(url, { mode: "cors" })
       .then(response => {
-          if (response.status !== 200)  {
-            throw `${response.status}: ${response.statusText}`;
+        if (response.status !== 200) {
+          throw `${response.status}: ${response.statusText}`;
+        }
+        response.json().then(newData => {
+          data = data.concat(newData.results);
+
+          if (newData.next) {
+            this.getAllData(newData.next, data).then(resolve).catch(reject)
+          } else {
+            resolve(data);
           }
-          response.json().then(newData => { 
-            data = data.concat(newData.results);
-  
-            if(newData.next) {
-              this.getAllData(newData.next, data).then(resolve).catch(reject)
-            } else {
-              resolve(data);
-            }
-          }).catch(reject);
+        }).catch(reject);
       }).catch(reject));
   }
 }

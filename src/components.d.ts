@@ -5,35 +5,21 @@
  */
 
 
-import '@stencil/core';
-
-
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-
   interface MatDialog {
     /**
     * The Dialog Title
     */
     'dialogTitle': string;
-    'openDialog': () => void;
+    'openDialog': () => Promise<void>;
     /**
     * Whether to show the footer or not
     */
     'showFooter': boolean;
   }
-  interface MatDialogAttributes extends StencilHTMLAttributes {
-    /**
-    * The Dialog Title
-    */
-    'dialogTitle'?: string;
-    /**
-    * Whether to show the footer or not
-    */
-    'showFooter'?: boolean;
-  }
-
   interface SwFilmDetails {
     /**
     * The id for the film
@@ -44,23 +30,8 @@ export namespace Components {
     */
     'url': string;
   }
-  interface SwFilmDetailsAttributes extends StencilHTMLAttributes {
-    /**
-    * The id for the film
-    */
-    'filmId'?: number;
-    /**
-    * The URL for the film
-    */
-    'url'?: string;
-  }
-
   interface SwFilmList {}
-  interface SwFilmListAttributes extends StencilHTMLAttributes {}
-
   interface SwPeopleList {}
-  interface SwPeopleListAttributes extends StencilHTMLAttributes {}
-
   interface SwPersonDetails {
     /**
     * The id for the person
@@ -71,35 +42,9 @@ export namespace Components {
     */
     'url': string;
   }
-  interface SwPersonDetailsAttributes extends StencilHTMLAttributes {
-    'onOpenPersonDetails'?: (event: CustomEvent) => void;
-    /**
-    * The id for the person
-    */
-    'personId'?: number;
-    /**
-    * The URL for the person
-    */
-    'url'?: string;
-  }
 }
 
 declare global {
-  interface StencilElementInterfaces {
-    'MatDialog': Components.MatDialog;
-    'SwFilmDetails': Components.SwFilmDetails;
-    'SwFilmList': Components.SwFilmList;
-    'SwPeopleList': Components.SwPeopleList;
-    'SwPersonDetails': Components.SwPersonDetails;
-  }
-
-  interface StencilIntrinsicElements {
-    'mat-dialog': Components.MatDialogAttributes;
-    'sw-film-details': Components.SwFilmDetailsAttributes;
-    'sw-film-list': Components.SwFilmListAttributes;
-    'sw-people-list': Components.SwPeopleListAttributes;
-    'sw-person-details': Components.SwPersonDetailsAttributes;
-  }
 
 
   interface HTMLMatDialogElement extends Components.MatDialog, HTMLStencilElement {}
@@ -131,30 +76,66 @@ declare global {
     prototype: HTMLSwPersonDetailsElement;
     new (): HTMLSwPersonDetailsElement;
   };
-
   interface HTMLElementTagNameMap {
-    'mat-dialog': HTMLMatDialogElement
-    'sw-film-details': HTMLSwFilmDetailsElement
-    'sw-film-list': HTMLSwFilmListElement
-    'sw-people-list': HTMLSwPeopleListElement
-    'sw-person-details': HTMLSwPersonDetailsElement
-  }
-
-  interface ElementTagNameMap {
     'mat-dialog': HTMLMatDialogElement;
     'sw-film-details': HTMLSwFilmDetailsElement;
     'sw-film-list': HTMLSwFilmListElement;
     'sw-people-list': HTMLSwPeopleListElement;
     'sw-person-details': HTMLSwPersonDetailsElement;
   }
-
-
-  export namespace JSX {
-    export interface Element {}
-    export interface IntrinsicElements extends StencilIntrinsicElements {
-      [tagName: string]: any;
-    }
-  }
-  export interface HTMLAttributes extends StencilHTMLAttributes {}
-
 }
+
+declare namespace LocalJSX {
+  interface MatDialog extends JSXBase.HTMLAttributes<HTMLMatDialogElement> {
+    /**
+    * The Dialog Title
+    */
+    'dialogTitle'?: string;
+    /**
+    * Whether to show the footer or not
+    */
+    'showFooter'?: boolean;
+  }
+  interface SwFilmDetails extends JSXBase.HTMLAttributes<HTMLSwFilmDetailsElement> {
+    /**
+    * The id for the film
+    */
+    'filmId'?: number;
+    /**
+    * The URL for the film
+    */
+    'url'?: string;
+  }
+  interface SwFilmList extends JSXBase.HTMLAttributes<HTMLSwFilmListElement> {}
+  interface SwPeopleList extends JSXBase.HTMLAttributes<HTMLSwPeopleListElement> {}
+  interface SwPersonDetails extends JSXBase.HTMLAttributes<HTMLSwPersonDetailsElement> {
+    'onOpenPersonDetails'?: (event: CustomEvent<any>) => void;
+    /**
+    * The id for the person
+    */
+    'personId'?: number;
+    /**
+    * The URL for the person
+    */
+    'url'?: string;
+  }
+
+  interface IntrinsicElements {
+    'mat-dialog': MatDialog;
+    'sw-film-details': SwFilmDetails;
+    'sw-film-list': SwFilmList;
+    'sw-people-list': SwPeopleList;
+    'sw-person-details': SwPersonDetails;
+  }
+}
+
+export { LocalJSX as JSX };
+
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
+

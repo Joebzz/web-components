@@ -1,4 +1,4 @@
-import { Component, State, Listen } from '@stencil/core';
+import { Component, State, Listen, h } from '@stencil/core';
 import { MDCSelect } from '@material/select';
 
 import { SwapiService } from '../../services/swapi';
