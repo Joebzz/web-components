@@ -15,10 +15,23 @@
 
 ## Events
 
-| Event               | Description | Type                |
-| ------------------- | ----------- | ------------------- |
-| `openPersonDetails` |             | `CustomEvent<void>` |
+| Event               | Description | Type               |
+| ------------------- | ----------- | ------------------ |
+| `openPersonDetails` |             | `CustomEvent<any>` |
 
+
+## Dependencies
+
+### Used by
+
+ - [sw-film-details](..\sw-film-details)
+
+### Graph
+```mermaid
+graph TD;
+  sw-film-details --> sw-person-details
+  style sw-person-details fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

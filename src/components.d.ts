@@ -9,6 +9,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
+  interface LeafletMap {}
   interface MatDialog {
     /**
     * The Dialog Title
@@ -19,6 +20,18 @@ export namespace Components {
     * Whether to show the footer or not
     */
     'showFooter': boolean;
+  }
+  interface OlLayerWms {
+    'getLayer': () => Promise<any>;
+    'getSource': () => Promise<any>;
+    'layer': string;
+    'serverType': string;
+    'url': string;
+  }
+  interface OlMap {
+    'latitude': number;
+    'longitude': number;
+    'zoom': number;
   }
   interface SwFilmDetails {
     /**
@@ -47,10 +60,28 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLLeafletMapElement extends Components.LeafletMap, HTMLStencilElement {}
+  var HTMLLeafletMapElement: {
+    prototype: HTMLLeafletMapElement;
+    new (): HTMLLeafletMapElement;
+  };
+
   interface HTMLMatDialogElement extends Components.MatDialog, HTMLStencilElement {}
   var HTMLMatDialogElement: {
     prototype: HTMLMatDialogElement;
     new (): HTMLMatDialogElement;
+  };
+
+  interface HTMLOlLayerWmsElement extends Components.OlLayerWms, HTMLStencilElement {}
+  var HTMLOlLayerWmsElement: {
+    prototype: HTMLOlLayerWmsElement;
+    new (): HTMLOlLayerWmsElement;
+  };
+
+  interface HTMLOlMapElement extends Components.OlMap, HTMLStencilElement {}
+  var HTMLOlMapElement: {
+    prototype: HTMLOlMapElement;
+    new (): HTMLOlMapElement;
   };
 
   interface HTMLSwFilmDetailsElement extends Components.SwFilmDetails, HTMLStencilElement {}
@@ -77,7 +108,10 @@ declare global {
     new (): HTMLSwPersonDetailsElement;
   };
   interface HTMLElementTagNameMap {
+    'leaflet-map': HTMLLeafletMapElement;
     'mat-dialog': HTMLMatDialogElement;
+    'ol-layer-wms': HTMLOlLayerWmsElement;
+    'ol-map': HTMLOlMapElement;
     'sw-film-details': HTMLSwFilmDetailsElement;
     'sw-film-list': HTMLSwFilmListElement;
     'sw-people-list': HTMLSwPeopleListElement;
@@ -86,6 +120,7 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface LeafletMap extends JSXBase.HTMLAttributes<HTMLLeafletMapElement> {}
   interface MatDialog extends JSXBase.HTMLAttributes<HTMLMatDialogElement> {
     /**
     * The Dialog Title
@@ -95,6 +130,16 @@ declare namespace LocalJSX {
     * Whether to show the footer or not
     */
     'showFooter'?: boolean;
+  }
+  interface OlLayerWms extends JSXBase.HTMLAttributes<HTMLOlLayerWmsElement> {
+    'layer'?: string;
+    'serverType'?: string;
+    'url'?: string;
+  }
+  interface OlMap extends JSXBase.HTMLAttributes<HTMLOlMapElement> {
+    'latitude'?: number;
+    'longitude'?: number;
+    'zoom'?: number;
   }
   interface SwFilmDetails extends JSXBase.HTMLAttributes<HTMLSwFilmDetailsElement> {
     /**
@@ -121,7 +166,10 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'leaflet-map': LeafletMap;
     'mat-dialog': MatDialog;
+    'ol-layer-wms': OlLayerWms;
+    'ol-map': OlMap;
     'sw-film-details': SwFilmDetails;
     'sw-film-list': SwFilmList;
     'sw-people-list': SwPeopleList;

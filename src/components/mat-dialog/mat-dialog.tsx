@@ -25,7 +25,7 @@ export class MATDialog {
   }
 
   @Method()
-  openDialog() {
+  async openDialog() {
     this.dialog.open();
   }
 

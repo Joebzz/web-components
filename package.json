@@ -20,23 +20,25 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@material/button": "^2.3.0",
-    "@material/card": "^2.3.0",
-    "@material/dialog": "^2.3.0",
-    "@material/list": "^2.3.0",
-    "@material/select": "^2.3.0",
-    "@stencil/sass": "^0.2.3"
+    "@material/button": "^3.1.0",
+    "@material/card": "^3.1.0",
+    "@material/dialog": "^3.1.0",
+    "@material/list": "^3.1.0",
+    "@material/select": "^3.1.0",
+    "@stencil/sass": "^1.0.1",
+    "@types/ol": "^5.3.3",
+    "ol": "^5.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@stencil/core": "^1.0.0",
-    "@storybook/html": "^5.1.1",
-    "@types/jest": "24.0.12",
-    "@types/puppeteer": "1.12.4",
+    "@babel/core": "^7.5.5",
+    "@stencil/core": "^1.2.3",
+    "@storybook/html": "^5.1.10",
+    "@types/jest": "^24.0.16",
+    "@types/puppeteer": "^1.19.0",
     "babel-loader": "^8.0.6",
     "jest": "24.8.0",
     "jest-cli": "24.8.0",
-    "puppeteer": "1.15.0"
+    "puppeteer": "^1.19.0"
   },
   "license": "MIT"
 }

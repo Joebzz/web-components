@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Stencil Components</title>  
+  <title>Stencil Components</title>
   <script type="module" src="/build/mycomponent.esm.js"></script>
   <script nomodule src="/build/mycomponent.js"></script>
 </head>
+
 <body>
   <!-- <sw-people-list></sw-people-list> -->
-  <sw-film-list></sw-film-list>  
+  <!-- <sw-film-list></sw-film-list>   -->
+  <ol-map longitude="-9.78240" latitude="52.54213" zoom="6">
+    <ol-layer-wms url="http://ows.mundialis.de/services/service" layer="30">
+    </ol-layer-wms>
+  </ol-map>
 </body>
+
 </html>

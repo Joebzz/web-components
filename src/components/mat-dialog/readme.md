@@ -15,16 +15,29 @@
 
 ## Methods
 
-### `openDialog() => void`
+### `openDialog() => Promise<void>`
 
 
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Used by
+
+ - [sw-film-list](..\sw-film-list)
+
+### Graph
+```mermaid
+graph TD;
+  sw-film-list --> mat-dialog
+  style mat-dialog fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

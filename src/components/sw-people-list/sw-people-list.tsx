@@ -1,7 +1,6 @@
 import { Component, h } from '@stencil/core';
 import { SwapiService } from '../../services/swapi';
 
-
 @Component({
     tag: 'sw-people-list',
     styleUrl: 'sw-people-list.scss'
