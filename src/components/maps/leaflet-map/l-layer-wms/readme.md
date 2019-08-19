@@ -26,16 +26,6 @@ Type: `Promise<any>`
 
 
 
-### `getSource() => Promise<any>`
-
-
-
-#### Returns
-
-Type: `Promise<any>`
-
-
-
 
 ----------------------------------------------
 

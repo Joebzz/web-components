@@ -7,26 +7,16 @@
 
 ## Properties
 
-| Property     | Attribute     | Description | Type     | Default     |
-| ------------ | ------------- | ----------- | -------- | ----------- |
-| `layer`      | `layer`       |             | `string` | `undefined` |
-| `serverType` | `server-type` |             | `string` | `undefined` |
-| `url`        | `url`         |             | `string` | `undefined` |
+| Property     | Attribute     | Description | Type     | Default       |
+| ------------ | ------------- | ----------- | -------- | ------------- |
+| `layer`      | `layer`       |             | `string` | `undefined`   |
+| `serverType` | `server-type` |             | `string` | `'geoserver'` |
+| `url`        | `url`         |             | `string` | `undefined`   |
 
 
 ## Methods
 
 ### `getLayer() => Promise<any>`
-
-
-
-#### Returns
-
-Type: `Promise<any>`
-
-
-
-### `getSource() => Promise<any>`
 
 
 
