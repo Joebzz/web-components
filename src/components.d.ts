@@ -9,7 +9,17 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface LeafletMap {}
+  interface LLayerWms {
+    'getLayer': () => Promise<any>;
+    'layer': string;
+    'serverType': string;
+    'url': string;
+  }
+  interface LMap {
+    'latitude': number;
+    'longitude': number;
+    'zoom': number;
+  }
   interface MatDialog {
     /**
     * The Dialog Title
@@ -23,7 +33,6 @@ export namespace Components {
   }
   interface OlLayerWms {
     'getLayer': () => Promise<any>;
-    'getSource': () => Promise<any>;
     'layer': string;
     'serverType': string;
     'url': string;
@@ -33,6 +42,7 @@ export namespace Components {
     'longitude': number;
     'zoom': number;
   }
+  interface PlotlyScatter {}
   interface SwFilmDetails {
     /**
     * The id for the film
@@ -60,10 +70,16 @@ export namespace Components {
 declare global {
 
 
-  interface HTMLLeafletMapElement extends Components.LeafletMap, HTMLStencilElement {}
-  var HTMLLeafletMapElement: {
-    prototype: HTMLLeafletMapElement;
-    new (): HTMLLeafletMapElement;
+  interface HTMLLLayerWmsElement extends Components.LLayerWms, HTMLStencilElement {}
+  var HTMLLLayerWmsElement: {
+    prototype: HTMLLLayerWmsElement;
+    new (): HTMLLLayerWmsElement;
+  };
+
+  interface HTMLLMapElement extends Components.LMap, HTMLStencilElement {}
+  var HTMLLMapElement: {
+    prototype: HTMLLMapElement;
+    new (): HTMLLMapElement;
   };
 
   interface HTMLMatDialogElement extends Components.MatDialog, HTMLStencilElement {}
@@ -82,6 +98,12 @@ declare global {
   var HTMLOlMapElement: {
     prototype: HTMLOlMapElement;
     new (): HTMLOlMapElement;
+  };
+
+  interface HTMLPlotlyScatterElement extends Components.PlotlyScatter, HTMLStencilElement {}
+  var HTMLPlotlyScatterElement: {
+    prototype: HTMLPlotlyScatterElement;
+    new (): HTMLPlotlyScatterElement;
   };
 
   interface HTMLSwFilmDetailsElement extends Components.SwFilmDetails, HTMLStencilElement {}
@@ -108,10 +130,12 @@ declare global {
     new (): HTMLSwPersonDetailsElement;
   };
   interface HTMLElementTagNameMap {
-    'leaflet-map': HTMLLeafletMapElement;
+    'l-layer-wms': HTMLLLayerWmsElement;
+    'l-map': HTMLLMapElement;
     'mat-dialog': HTMLMatDialogElement;
     'ol-layer-wms': HTMLOlLayerWmsElement;
     'ol-map': HTMLOlMapElement;
+    'plotly-scatter': HTMLPlotlyScatterElement;
     'sw-film-details': HTMLSwFilmDetailsElement;
     'sw-film-list': HTMLSwFilmListElement;
     'sw-people-list': HTMLSwPeopleListElement;
@@ -120,7 +144,16 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface LeafletMap extends JSXBase.HTMLAttributes<HTMLLeafletMapElement> {}
+  interface LLayerWms extends JSXBase.HTMLAttributes<HTMLLLayerWmsElement> {
+    'layer'?: string;
+    'serverType'?: string;
+    'url'?: string;
+  }
+  interface LMap extends JSXBase.HTMLAttributes<HTMLLMapElement> {
+    'latitude'?: number;
+    'longitude'?: number;
+    'zoom'?: number;
+  }
   interface MatDialog extends JSXBase.HTMLAttributes<HTMLMatDialogElement> {
     /**
     * The Dialog Title
@@ -141,6 +174,7 @@ declare namespace LocalJSX {
     'longitude'?: number;
     'zoom'?: number;
   }
+  interface PlotlyScatter extends JSXBase.HTMLAttributes<HTMLPlotlyScatterElement> {}
   interface SwFilmDetails extends JSXBase.HTMLAttributes<HTMLSwFilmDetailsElement> {
     /**
     * The id for the film
@@ -166,10 +200,12 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
-    'leaflet-map': LeafletMap;
+    'l-layer-wms': LLayerWms;
+    'l-map': LMap;
     'mat-dialog': MatDialog;
     'ol-layer-wms': OlLayerWms;
     'ol-map': OlMap;
+    'plotly-scatter': PlotlyScatter;
     'sw-film-details': SwFilmDetails;
     'sw-film-list': SwFilmList;
     'sw-people-list': SwPeopleList;

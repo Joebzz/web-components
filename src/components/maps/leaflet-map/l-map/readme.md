@@ -1,4 +1,4 @@
-# leaflet-map
+# l-map
 
 
 

@@ -1,19 +1,19 @@
 import { TestWindow } from '@stencil/core/testing';
-import { LeafletMap } from './leaflet-map';
+import { PlotlyScatter } from './plotly-scatter';
 
-describe('leaflet-map', () => {
+describe('plotly-scatter', () => {
   it('should build', () => {
-    expect(new LeafletMap()).toBeTruthy();
+    expect(new PlotlyScatter()).toBeTruthy();
   });
 
   describe('rendering', () => {
-    let element: HTMLLeafletMapElement;
+    let element: HTMLPlotlyScatterElement;
     let testWindow: TestWindow;
     beforeEach(async () => {
       testWindow = new TestWindow();
       element = await testWindow.load({
-        components: [LeafletMap],
-        html: '<leaflet-map></leaflet-map>'
+        components: [PlotlyScatter],
+        html: '<plotly-scatter></plotly-scatter>'
       });
     });
 

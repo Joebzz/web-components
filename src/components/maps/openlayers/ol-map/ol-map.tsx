@@ -49,7 +49,6 @@ export class OLMap {
             let child = (children[i] as any);
             if (child.getLayer) {
                 child.getLayer().then((res) => {
-                    console.log("Adding Map Layer", res);
                     this._map.addLayer(res);
                 });
             }
@@ -58,7 +57,7 @@ export class OLMap {
 
     render() {
         return (
-            <div>
+            <div class="map-container">
                 <div id="map" class="map">
                 </div>
                 <div id="mapLayers">
