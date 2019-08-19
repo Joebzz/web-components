@@ -1,10 +1,9 @@
 import { h, Component, Element, Prop } from '@stencil/core';
 
-import Map from 'ol/map';
-import View from 'ol/view';
-import TileLayer from 'ol/layer/tile';
-import OSM from 'ol/source/OSM';
+import { Map, View } from 'ol';
 import { fromLonLat } from 'ol/proj';
+import { Tile } from 'ol/layer';
+import { OSM } from 'ol/source';
 
 @Component({
     tag: 'ol-map',
@@ -36,7 +35,7 @@ export class OLMap {
     getBaseLayers() {
         let layers = [];
         // Add a base layer    
-        layers.push(new TileLayer({
+        layers.push(new Tile({
             source: new OSM()
         }));
         return layers;

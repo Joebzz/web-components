@@ -1,7 +1,7 @@
 import { Component, Method, Prop } from '@stencil/core';
 
-import ImageLayer from 'ol/layer/Image';
-import ImageWMS from 'ol/source/ImageWMS';
+import { Image } from 'ol/layer';
+import { ImageWMS } from 'ol/source';
 
 @Component({
     tag: 'ol-layer-wms',
@@ -14,7 +14,7 @@ export class OlLayerWms {
     private _layer: any;
 
     componentDidLoad() {
-        this._layer = new ImageLayer({
+        this._layer = new Image({
             //extent: [-13884991, 2870341, -7455066, 6338219],
             source: new ImageWMS({
                 url: this.url,
@@ -24,7 +24,7 @@ export class OlLayerWms {
             })
         });
     }
-    
+
     @Method()
     async getLayer() {
         return this._layer;
