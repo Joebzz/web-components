@@ -12,14 +12,57 @@
 <body>
   <!-- <sw-people-list></sw-people-list> -->
   <!-- <sw-film-list></sw-film-list>   -->
-  <ol-map longitude="-9.78240" latitude="52.54213" zoom="6">
-    <ol-layer-wms url="http://ows.mundialis.de/services/service" layer="TOPO-OSM-WMS">
-    </ol-layer-wms>
-  </ol-map>
-  <l-map longitude="-9.78240" latitude="52.54213" zoom="6">
-    <l-layer-wms url="http://ows.mundialis.de/services/service" layer="TOPO-OSM-WMS">
-    </l-layer-wms>
-  </l-map>
+  <div id="olMap">
+    <h1>Test Map for OpenLayers</h1>
+    <ol-map longitude="-9.78240" latitude="52.54213" zoom="6">
+      <!-- <ol-layer-wms url="http://ows.mundialis.de/services/service" layer="TOPO-OSM-WMS">
+      </ol-layer-wms> -->
+      <ol-layer-wms url="http://10.11.1.60:8080/geoserver/Product_Atlas/wms?service=WMS" layer="Product_Atlas:fisheries">
+      </ol-layer-wms>
+      <ol-layer-wms url="http://10.11.1.60:8080/geoserver/Product_Atlas/wms?service=WMS" layer="Product_Atlas:geology">
+      </ol-layer-wms>
+      <ol-layer-wms url="http://10.11.1.60:8080/geoserver/Product_Atlas/wms?service=WMS" layer="Product_Atlas:landcover">
+      </ol-layer-wms>
+      <ol-layer-wms url="http://10.11.1.60:8080/geoserver/Product_Atlas/wms?service=WMS" layer="Product_Atlas:hydrography">
+      </ol-layer-wms>
+      <ol-layer-wms url="http://10.11.1.60:8080/geoserver/Product_Atlas/wms?service=WMS" layer="Product_Atlas:searegions">
+      </ol-layer-wms>
+      <ol-layer-wms url="http://10.11.1.60:8080/geoserver/Product_Atlas/wms?service=WMS" layer="Product_Atlas:protectedsites">
+      </ol-layer-wms>
+    </ol-map>
+  </div>
+
+  <div id="lMap" style="display: none;">
+      <h1>Test Map for Lealfet</h1>
+    <l-map longitude="-9.78240" latitude="52.54213" zoom="6">
+      <!-- <l-layer-wms url="http://ows.mundialis.de/services/service" layer="TOPO-OSM-WMS">
+      </l-layer-wms> -->
+      <l-layer-wms url="http://10.11.1.60:8080/geoserver/Product_Atlas/wms?service=WMS" layer="Product_Atlas:fisheries">
+      </l-layer-wms>
+      <l-layer-wms url="http://10.11.1.60:8080/geoserver/Product_Atlas/wms?service=WMS" layer="Product_Atlas:geology">
+      </l-layer-wms>
+      <l-layer-wms url="http://10.11.1.60:8080/geoserver/Product_Atlas/wms?service=WMS" layer="Product_Atlas:landcover">
+      </l-layer-wms>
+      <l-layer-wms url="http://10.11.1.60:8080/geoserver/Product_Atlas/wms?service=WMS" layer="Product_Atlas:hydrography">
+      </l-layer-wms>
+      <l-layer-wms url="http://10.11.1.60:8080/geoserver/Product_Atlas/wms?service=WMS" layer="Product_Atlas:searegions">
+      </l-layer-wms>
+      <l-layer-wms url="http://10.11.1.60:8080/geoserver/Product_Atlas/wms?service=WMS" layer="Product_Atlas:protectedsites">
+      </l-layer-wms>
+    </l-map>
+  </div>
+
+  <script>
+    var url = window.location.href;
+    if (url.indexOf('?type=leaflet') != -1){
+      document.getElementById("lMap").style.display = "block";
+      document.getElementById("olMap").style.display = "none";
+    }
+    else if (url.indexOf('?type=openlayers') != -1){
+      document.getElementById("lMap").style.display = "none";
+      document.getElementById("olMap").style.display = "block";
+    }
+  </script>
 </body>
 
 </html>

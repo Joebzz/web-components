@@ -15,11 +15,11 @@ export class OLMap {
     @Prop() longitude: number;
     @Prop() zoom: number;
     private _map: Map;
-    private mapElement: HTMLElement;
+    private _mapElement: HTMLElement;
 
     protected componentDidLoad() {
         if (this._map) return;
-        this.mapElement = this.el.querySelector('#map');
+        this._mapElement = this.el.querySelector('#map');
         this._map = new Map({
             loadTilesWhileAnimating: true,
             view: new View({
@@ -27,7 +27,7 @@ export class OLMap {
                 zoom: this.zoom
             }),
             layers: this.getBaseLayers(),
-            target: this.mapElement
+            target: this._mapElement
         });
         this.addChildLayers();
     }
