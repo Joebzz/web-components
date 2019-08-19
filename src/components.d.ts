@@ -10,7 +10,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface LLayerWms {
-    'getLayer': () => Promise<any>;
+    'getLayer': () => Promise<L.Layer>;
     'layer': string;
     'serverType': string;
     'url': string;

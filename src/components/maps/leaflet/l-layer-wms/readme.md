@@ -16,13 +16,13 @@
 
 ## Methods
 
-### `getLayer() => Promise<any>`
+### `getLayer() => Promise<L.Layer>`
 
 
 
 #### Returns
 
-Type: `Promise<any>`
+Type: `Promise<Layer>`
 
 
 

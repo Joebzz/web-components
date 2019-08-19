@@ -10,11 +10,13 @@ export class LLayerWms {
     @Prop() url: string;
     @Prop() layer: string;
     @Prop() serverType: string;
-    private _layer: any;
+    private _layer: L.Layer;
 
     componentDidLoad() {
         this._layer = L.tileLayer.wms(this.url, {
-            layers: this.layer
+            layers: this.layer,
+            transparent: true,
+            format: 'image/png'
         });
     }
 

@@ -14,6 +14,8 @@ export class LMap {
 
     private _map: L.Map;
 
+    private _layersControl: L.Control.Layers;
+
     private oceanLayer: L.TileLayer = L.tileLayer('//services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}.png', {
         attribution: 'Esri Ocean Basemap - &copy; Esri, GEBCO, NOAA, National Geographic, DeLorme, HERE, Geonames.org, INFOMAR and other contributors',
         noWrap: true,
@@ -30,7 +32,10 @@ export class LMap {
                 layers: [this.oceanLayer]
             }
         );
+        this._layersControl = L.control.layers();
+        this._layersControl .options.collapsed = false;
         this.addChildLayers();
+        this._map.addControl(this._layersControl);
     }
 
     addChildLayers() {
@@ -38,8 +43,11 @@ export class LMap {
         for (let i = 0; i < children.length; i++) {
             let child = (children[i] as any);
             if (child.getLayer) {
-                child.getLayer().then((res) => {
+                child.getLayer().then((res: L.Layer) => {
+                    const layerRes = res as any;
+                    const layerTitle = layerRes.wmsParams.layers;
                     this._map.addLayer(res);
+                    this._layersControl.addOverlay(res, layerTitle);
                 });
             }
         }
