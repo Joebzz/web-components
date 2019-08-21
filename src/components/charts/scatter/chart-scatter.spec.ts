@@ -1,9 +1,9 @@
 import { TestWindow } from '@stencil/core/testing';
-import { PlotlyScatter } from './plotly-scatter';
+import { ChartScatter } from './chart-scatter';
 
 describe('plotly-scatter', () => {
   it('should build', () => {
-    expect(new PlotlyScatter()).toBeTruthy();
+    expect(new ChartScatter()).toBeTruthy();
   });
 
   describe('rendering', () => {
@@ -12,8 +12,8 @@ describe('plotly-scatter', () => {
     beforeEach(async () => {
       testWindow = new TestWindow();
       element = await testWindow.load({
-        components: [PlotlyScatter],
-        html: '<plotly-scatter></plotly-scatter>'
+        components: [ChartScatter],
+        html: '<chart-scatter></chart-scatter>'
       });
     });
 

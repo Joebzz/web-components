@@ -1,4 +1,4 @@
-# plotly-scatter
+# chart-scatter
 
 
 

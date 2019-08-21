@@ -9,6 +9,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
+  interface ChartScatter {}
   interface LLayerWms {
     'getLayer': () => Promise<L.Layer>;
     'layer': string;
@@ -42,7 +43,6 @@ export namespace Components {
     'longitude': number;
     'zoom': number;
   }
-  interface PlotlyScatter {}
   interface SwFilmDetails {
     /**
     * The id for the film
@@ -69,6 +69,12 @@ export namespace Components {
 
 declare global {
 
+
+  interface HTMLChartScatterElement extends Components.ChartScatter, HTMLStencilElement {}
+  var HTMLChartScatterElement: {
+    prototype: HTMLChartScatterElement;
+    new (): HTMLChartScatterElement;
+  };
 
   interface HTMLLLayerWmsElement extends Components.LLayerWms, HTMLStencilElement {}
   var HTMLLLayerWmsElement: {
@@ -100,12 +106,6 @@ declare global {
     new (): HTMLOlMapElement;
   };
 
-  interface HTMLPlotlyScatterElement extends Components.PlotlyScatter, HTMLStencilElement {}
-  var HTMLPlotlyScatterElement: {
-    prototype: HTMLPlotlyScatterElement;
-    new (): HTMLPlotlyScatterElement;
-  };
-
   interface HTMLSwFilmDetailsElement extends Components.SwFilmDetails, HTMLStencilElement {}
   var HTMLSwFilmDetailsElement: {
     prototype: HTMLSwFilmDetailsElement;
@@ -130,12 +130,12 @@ declare global {
     new (): HTMLSwPersonDetailsElement;
   };
   interface HTMLElementTagNameMap {
+    'chart-scatter': HTMLChartScatterElement;
     'l-layer-wms': HTMLLLayerWmsElement;
     'l-map': HTMLLMapElement;
     'mat-dialog': HTMLMatDialogElement;
     'ol-layer-wms': HTMLOlLayerWmsElement;
     'ol-map': HTMLOlMapElement;
-    'plotly-scatter': HTMLPlotlyScatterElement;
     'sw-film-details': HTMLSwFilmDetailsElement;
     'sw-film-list': HTMLSwFilmListElement;
     'sw-people-list': HTMLSwPeopleListElement;
@@ -144,6 +144,7 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface ChartScatter extends JSXBase.HTMLAttributes<HTMLChartScatterElement> {}
   interface LLayerWms extends JSXBase.HTMLAttributes<HTMLLLayerWmsElement> {
     'layer'?: string;
     'serverType'?: string;
@@ -174,7 +175,6 @@ declare namespace LocalJSX {
     'longitude'?: number;
     'zoom'?: number;
   }
-  interface PlotlyScatter extends JSXBase.HTMLAttributes<HTMLPlotlyScatterElement> {}
   interface SwFilmDetails extends JSXBase.HTMLAttributes<HTMLSwFilmDetailsElement> {
     /**
     * The id for the film
@@ -200,12 +200,12 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'chart-scatter': ChartScatter;
     'l-layer-wms': LLayerWms;
     'l-map': LMap;
     'mat-dialog': MatDialog;
     'ol-layer-wms': OlLayerWms;
     'ol-map': OlMap;
-    'plotly-scatter': PlotlyScatter;
     'sw-film-details': SwFilmDetails;
     'sw-film-list': SwFilmList;
     'sw-people-list': SwPeopleList;
