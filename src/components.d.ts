@@ -9,7 +9,6 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface ChartScatter {}
   interface LLayerWms {
     'getLayer': () => Promise<L.Layer>;
     'layer': string;
@@ -21,6 +20,7 @@ export namespace Components {
     'longitude': number;
     'zoom': number;
   }
+  interface LineChart {}
   interface MatDialog {
     /**
     * The Dialog Title
@@ -70,12 +70,6 @@ export namespace Components {
 declare global {
 
 
-  interface HTMLChartScatterElement extends Components.ChartScatter, HTMLStencilElement {}
-  var HTMLChartScatterElement: {
-    prototype: HTMLChartScatterElement;
-    new (): HTMLChartScatterElement;
-  };
-
   interface HTMLLLayerWmsElement extends Components.LLayerWms, HTMLStencilElement {}
   var HTMLLLayerWmsElement: {
     prototype: HTMLLLayerWmsElement;
@@ -86,6 +80,12 @@ declare global {
   var HTMLLMapElement: {
     prototype: HTMLLMapElement;
     new (): HTMLLMapElement;
+  };
+
+  interface HTMLLineChartElement extends Components.LineChart, HTMLStencilElement {}
+  var HTMLLineChartElement: {
+    prototype: HTMLLineChartElement;
+    new (): HTMLLineChartElement;
   };
 
   interface HTMLMatDialogElement extends Components.MatDialog, HTMLStencilElement {}
@@ -130,9 +130,9 @@ declare global {
     new (): HTMLSwPersonDetailsElement;
   };
   interface HTMLElementTagNameMap {
-    'chart-scatter': HTMLChartScatterElement;
     'l-layer-wms': HTMLLLayerWmsElement;
     'l-map': HTMLLMapElement;
+    'line-chart': HTMLLineChartElement;
     'mat-dialog': HTMLMatDialogElement;
     'ol-layer-wms': HTMLOlLayerWmsElement;
     'ol-map': HTMLOlMapElement;
@@ -144,7 +144,6 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface ChartScatter extends JSXBase.HTMLAttributes<HTMLChartScatterElement> {}
   interface LLayerWms extends JSXBase.HTMLAttributes<HTMLLLayerWmsElement> {
     'layer'?: string;
     'serverType'?: string;
@@ -155,6 +154,7 @@ declare namespace LocalJSX {
     'longitude'?: number;
     'zoom'?: number;
   }
+  interface LineChart extends JSXBase.HTMLAttributes<HTMLLineChartElement> {}
   interface MatDialog extends JSXBase.HTMLAttributes<HTMLMatDialogElement> {
     /**
     * The Dialog Title
@@ -200,9 +200,9 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
-    'chart-scatter': ChartScatter;
     'l-layer-wms': LLayerWms;
     'l-map': LMap;
+    'line-chart': LineChart;
     'mat-dialog': MatDialog;
     'ol-layer-wms': OlLayerWms;
     'ol-map': OlMap;

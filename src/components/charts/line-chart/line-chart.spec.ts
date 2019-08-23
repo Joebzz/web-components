@@ -1,19 +1,19 @@
 import { TestWindow } from '@stencil/core/testing';
-import { ChartScatter } from './chart-scatter';
+import { LineChart } from './line-chart';
 
-describe('plotly-scatter', () => {
+describe('line-chart', () => {
   it('should build', () => {
-    expect(new ChartScatter()).toBeTruthy();
+    expect(new LineChart()).toBeTruthy();
   });
 
   describe('rendering', () => {
-    let element: HTMLPlotlyScatterElement;
+    let element: HTMLLineChartElement;
     let testWindow: TestWindow;
     beforeEach(async () => {
       testWindow = new TestWindow();
       element = await testWindow.load({
-        components: [ChartScatter],
-        html: '<chart-scatter></chart-scatter>'
+        components: [LineChart],
+        html: '<line-chart></line-chart>'
       });
     });
 

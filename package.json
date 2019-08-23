@@ -20,12 +20,11 @@
     "start.prod": "stencil build --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "@amcharts/amcharts4": "^4.5.14",
     "@material/button": "^3.1.0",
     "@material/card": "^3.1.0",
     "@material/dialog": "^3.1.0",
@@ -33,7 +32,8 @@
     "@material/select": "^3.1.0",
     "gh-pages": "^2.1.1",
     "leaflet": "^1.5.1",
-    "ol": "^5.3.3"
+    "ol": "^5.3.3",
+    "rollup-plugin-node-polyfills": "^0.2.1"
   },
   "devDependencies": {
     "@stencil/core": "^1.2.5",

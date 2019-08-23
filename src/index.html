@@ -4,12 +4,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Stencil Components</title>
+  <title>Web Components</title>
   <script type="module" src="/build/webcomponents.esm.js"></script>
   <script nomodule src="/build/webcomponents.js"></script>
 </head>
 
 <body>
+  <a href="?type=linechart">Line Chart</a>
+  <a href="?type=leaflet">Lealfet Map</a>
+  <a href="?type=openlayers">OpenLayers Map</a>
+  <div id="lineChart" style="display: none;">
+      <line-chart></line-chart>
+  </div>
   <div id="lMap">
     <h1>Test Map for Lealfet</h1>
     <l-map longitude="-9.78240" latitude="52.54213" zoom="6">      
@@ -49,12 +55,22 @@
   <script>
     var url = window.location.href;
     if (url.indexOf('?type=leaflet') != -1) {
+      hideAll();
       document.getElementById("lMap").style.display = "block";
-      document.getElementById("olMap").style.display = "none";
     }
     else if (url.indexOf('?type=openlayers') != -1) {
-      document.getElementById("lMap").style.display = "none";
+      hideAll();
       document.getElementById("olMap").style.display = "block";
+    }
+    else if (url.indexOf('?type=linechart') != -1) {
+      hideAll();
+      document.getElementById("lineChart").style.display = "block";
+    }
+
+    function hideAll() {
+      document.getElementById("lineChart").style.display = "none";
+      document.getElementById("lMap").style.display = "none";
+      document.getElementById("olMap").style.display = "none";
     }
   </script>
 </body>
